@@ -1,0 +1,22 @@
+{
+  "name": "aws-task-manager",
+  "version": "1.0.0",
+  "description": "A simple task manager built with AWS Lambda, DynamoDB, SNS, and SQS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "serverless deploy",
+    "remove": "serverless remove"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1031.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.87",
+    "@types/node": "^16.11.12",
+    "serverless": "^3.14.0",
+    "serverless-offline": "^8.4.0",
+    "typescript": "^4.5.4",
+    "ts-node": "^10.4.0"
+  }
+}
