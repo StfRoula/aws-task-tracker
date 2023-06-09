@@ -1,7 +1,7 @@
 import {Task} from './type'
 import client from './dbClient';
 
-async function createTask(task: Task): Promise<void> {
+export async function createTask(task: Task): Promise<void> {
     const params = {
         TableName: 'Tasks',
         Item: task,
@@ -15,7 +15,7 @@ async function createTask(task: Task): Promise<void> {
 }
 
 
-async function getTask(id: string): Promise<Task | null> {
+export async function getTask(id: string): Promise<Task | null> {
     const params = {
         TableName: 'Tasks',
         Key: { id },
@@ -37,7 +37,7 @@ async function getTask(id: string): Promise<Task | null> {
 
 
 
-async function updateTask(id: string, updates: Partial<Task>): Promise<void> {
+export async function updateTask(id: string, updates: Partial<Task>): Promise<void> {
     const updateExpression = Object.keys(updates).map(key => `${key} = :${key}`).join(', ');
     const expressionAttributeValues = Object.entries(updates).reduce((acc, [key, value]) => ({ ...acc, [`:${key}`]: value }), {});
 
@@ -57,7 +57,7 @@ async function updateTask(id: string, updates: Partial<Task>): Promise<void> {
 }
 
 
-async function deleteTask(id: string): Promise<void> {
+export async function deleteTask(id: string): Promise<void> {
     const params = {
         TableName: 'Tasks',
         Key: { id },
@@ -70,7 +70,7 @@ async function deleteTask(id: string): Promise<void> {
     }
 }
 
-async function listTasks(): Promise<Task[]> {
+export async function listTasks(): Promise<Task[]> {
     const params = {
         TableName: 'Tasks',
     }
@@ -83,10 +83,4 @@ async function listTasks(): Promise<Task[]> {
     }
 }
 
-export default {
-    createTask,
-    getTask,
-    updateTask,
-    deleteTask,
-    listTasks,
-};
+
