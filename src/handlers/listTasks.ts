@@ -11,7 +11,7 @@ export const listTasksHandler: APIGatewayProxyHandler = async (event: APIGateway
     } catch (e) {
         return {
             statusCode: 500,
-            body: JSON.stringify(e)
+            body: JSON.stringify({message: "Error while listing tasks"})
 
         }
     }

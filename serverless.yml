@@ -1,3 +1,5 @@
+org: sstefa
+app: aws-task-manager
 service: aws-task-manager
 
 provider:
@@ -52,4 +54,4 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: 'Tasks'
+        TableName: 'Tasks2'

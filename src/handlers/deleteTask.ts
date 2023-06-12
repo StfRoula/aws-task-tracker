@@ -9,7 +9,7 @@ export const deleteTaskHandler: APIGatewayProxyHandler = async (event: APIGatewa
         await deleteTask(id)
         const params = {
             Message: `Task ${id} has been deleted.`,
-            TopicArn: '',
+            TopicArn: 'arn:aws:sns:us-east-1:044267579881:TaskManagerTopic',
         };
 
         await sns.publish(params).promise();

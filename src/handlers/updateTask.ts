@@ -11,7 +11,7 @@ export const updateTaskHandler: APIGatewayProxyHandler = async (event) => {
         await updateTask(id, updates);
         const params = {
             Message: `Task ${id} has been updated`,
-            TopicArn: '',
+            TopicArn: 'arn:aws:sns:us-east-1:044267579881:TaskManagerTopic',
         };
 
         await sns.publish(params).promise();
