@@ -3,5 +3,5 @@ export interface Task {
     description: string;
     assignee: string;
     dueDate: string;
-    status: string;
+    taskStatus: string;
 }

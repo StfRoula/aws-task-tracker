@@ -80,6 +80,7 @@ export async function listTasks(): Promise<Task[]> {
     }
     catch (error) {
         console.error(`Error listing tasks: `, error)
+        return [];
     }
 }
 

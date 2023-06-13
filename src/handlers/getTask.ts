@@ -2,9 +2,17 @@ import {APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult} fro
 import {getTask} from "../dynamodb";
 
 export const getTaskHandler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-  const { id } = event.pathParameters;
-  try {
-      const task = await getTask(id);
+    if (!event.pathParameters) {
+        return {
+            statusCode: 400,
+            body: JSON.stringify({ message: 'Missing path parameters' }),
+        };
+    }
+
+    const { id } = event.pathParameters;
+
+    try {
+      const task = await getTask(id!);
 
       return {
           statusCode: 200,
@@ -12,12 +20,12 @@ export const getTaskHandler: APIGatewayProxyHandler = async (event: APIGatewayPr
       };
 
   }
-  catch (e) {
-      return {
-          statusCode: 404,
-          body: JSON.stringify({
-              message: e.message
-          })
-      }
-  }
+    catch (e) {
+        const error = e as Error;
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ message: 'Internal Server Error', error: error.message }),
+        };
+    }
+
 }

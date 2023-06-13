@@ -1,11 +1,15 @@
-org: sstefa
-app: aws-task-manager
+
 service: aws-task-manager
 
 provider:
   name: aws
   runtime: nodejs14.x
   region: us-east-1
+
+plugins:
+  - serverless-plugin-typescript
+package:
+  individually: true
 
 functions:
   createTask:

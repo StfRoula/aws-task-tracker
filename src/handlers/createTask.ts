@@ -7,7 +7,7 @@ import {createTask} from '../dynamodb';
 export const createTaskHandler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     const body = JSON.parse(event.body || '{}');
 
-    if (!body.description || !body.assignee || !body.dueDate || !body.status) {
+    if (!body.description || !body.assignee || !body.dueDate || !body.taskStatus) {
         return {
             statusCode: 400,
             body: JSON.stringify({ message: 'Missing parameters in request body' }),
@@ -19,7 +19,7 @@ export const createTaskHandler: APIGatewayProxyHandler = async (event: APIGatewa
         description: body.description,
         assignee: body.assignee,
         dueDate: body.dueDate,
-        status: body.status,
+        taskStatus: body.taskStatus,
     };
 
     try {
