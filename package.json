@@ -4,10 +4,11 @@
   "description": "A simple task manager built with AWS Lambda, DynamoDB, SNS, and SQS.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
     "deploy": "serverless deploy",
     "remove": "serverless remove",
-    "build": "tsc"
+    "sort": "npx sort-package-json",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "aws-sdk": "^2.1031.0",
